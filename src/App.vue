@@ -1,27 +1,26 @@
-
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useSheetStore } from '@/stores/googleSheets';
-import Header from "@/components/Header.vue"
+import { onMounted } from 'vue'
+import { useSheetStore } from '@/stores/googleSheets'
+import Header from '@/components/Header.vue'
+import Loader from '@/components/Loader.vue'
 
-const store = useSheetStore();
+const store = useSheetStore()
 
 onMounted(() => {
   fetchData()
 })
 
 const fetchData = async () => {
-  await store.fetchSheetData();
-};
-
-const jsonData = store.jsonData;
+  await store.fetchSheetData()
+}
 </script>
 
 <template>
-  <Header />
-  <RouterView />
+  <Loader v-if="store.loading" />
+  <div v-else>
+    <Header />
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

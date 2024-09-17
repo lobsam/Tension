@@ -11,7 +11,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.0",
     "csvtojson": "^2.0.10",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
