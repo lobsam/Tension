@@ -5,19 +5,20 @@
         <div class="rotate-text">THEMATIC CONSIDERATIONS</div>
       </div>
       <div class="col-sm-6 col-12">
-        <div class="row g-5 my-5 justify-content-center align-items-center">
+        <div class="row g-5 my-5 justify-content-center align-items-top">
           <div
-            class="col-sm-6 d-flex justify-content-center align-items-center"
+            class="col-sm-6 d-flex justify-content-center align-items-top"
             v-for="(theme, i) in props.themes"
             :key="theme.id"
           >
             <div
-              :data-aos="aosStyle(i)"
-              class="card rounded-0"
-              :style="{ backgroundColor: getRandomColor(i) }"
-              style="height: 22rem; width: 22rem; color: white"
+              class="card rounded-0 p-2"
+              :style="getBackground(i, theme)"
+              style="width: 497px; color: white"
+              @mouseover="hoveredIndex = i"
+              @mouseleave="hoveredIndex = null"
             >
-              <div class="card-body pt-4" style="margin-top: 60px">
+              <div v-if="hoveredIndex !== i" class="card-body pt-4" style="margin-top: 60px">
                 <h6 class="card-title mb-3" style="font-size: 20px; font-weight: 800">
                   {{ theme.title }}
                 </h6>
@@ -39,20 +40,38 @@
   </div>
 </template>
 <script setup>
+import { ref } from 'vue'
 const props = defineProps({
   themes: {
     type: Object,
     required: true
   }
 })
+const hoveredIndex = ref(null)
 const themeColor = ['#C4A433', '#206856', '#205768', '#BF7575']
 const getRandomColor = (i) => {
   return themeColor[i]
 }
-
-const aosStyle = (i) => {
-  return i % 2 !== 0 ? 'fade-left' : 'fade-right'
+const getBackground = (index, theme) => {
+  if (hoveredIndex.value === index) {
+    return { backgroundImage: `url('${theme.image_url}')` }
+  } else {
+    return { backgroundColor: getRandomColor(index) }
+  }
 }
+
+// const aosStyle = (i) => {
+//   return i % 2 !== 0 ? 'fade-left' : 'fade-right'
+// }
+
+// const hoverEnter = () => {
+//   upHere.value = false
+//   console.log('hover', upHere.value)
+// }
+// const hoverLeave = () => {
+//   upHere.value = true
+//   console.log('hover', upHere.value)
+// }
 </script>
 
 <style scope>
@@ -62,9 +81,9 @@ const aosStyle = (i) => {
   font-weight: 900;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .rotate-text {
-    opacity: 1;
+    display: none;
   }
 }
 </style>

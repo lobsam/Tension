@@ -18,7 +18,11 @@
       </div>
     </div>
     <div class="p-5">
-      <span class="text-uppercase" style="font-size: 25px">Article/Books</span>
+      <span class="text-uppercase">
+        <router-link style="font-size: 25px; color: white" to="/articles"
+          >Article/Books</router-link
+        >
+      </span>
     </div>
   </div>
 </template>
