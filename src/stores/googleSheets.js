@@ -11,7 +11,7 @@ export const useSheetStore = defineStore('sheetStore', {
       pages:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1999087703&single=true&output=csv',
       articls:
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1999087703&single=true&output=csv',
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1030071400&single=true&output=csv',
       art: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1247829862&single=true&output=csv'
     },
     dataFromSheetUrl: {},
