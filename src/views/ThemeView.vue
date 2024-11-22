@@ -29,6 +29,14 @@
                   {{ theme.description }}
                 </p>
               </div>
+              <div
+                v-if="hoveredIndex == i"
+                class="card-body pt-4 d-flex justify-content-center align-items-center"
+              >
+                <h6 class="card-title mb-3" style="font-size: 16px; font-weight: 800">
+                  {{ theme.Image_description }}
+                </h6>
+              </div>
             </div>
           </div>
         </div>
