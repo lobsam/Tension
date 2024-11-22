@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div v-if="isLoading" class="d-flex justify-content-center">
+    <div v-if="isLoading" class="d-flex justify-content-center pb-3">
       <span>Loading...</span>
     </div>
-
-    <div else class="d-flex justify-content-center pb-3">
-      <canvas ref="pdfCanvas"></canvas>
-      <button class="btn btn-primary" @click="downloadPdf">Download PDF</button>
+    <div else>
+      <canvas ref="pdfCanvas" class="d-flex justify-content-center pb-3"></canvas>
+      <div class="d-flex justify-content-center pb-3">
+        <button class="btn btn-primary" @click="downloadPdf">Download PDF</button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +34,7 @@ onMounted(async () => {
   const pdf = await loadingTask.promise
   const page = await pdf.getPage(1)
 
-  const scale = 1.2
+  const scale = 1.5
   const viewport = page.getViewport({ scale })
 
   const canvas = pdfCanvas.value

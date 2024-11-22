@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="row container-fluid">
     <div class="col col-1 d-flex">
       <div class="d-flex justify-content-center align-items-center">
@@ -39,6 +40,7 @@
 </template>
 <script setup>
 import { useSheetStore } from '@/stores/googleSheets'
+import Header from '@/components/Header.vue'
 const store = useSheetStore()
 </script>
 <style scoped>

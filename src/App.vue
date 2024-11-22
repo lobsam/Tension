@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useSheetStore } from '@/stores/googleSheets'
-import Header from '@/components/Header.vue'
 import Loader from '@/components/Loader.vue'
 
 const store = useSheetStore()
@@ -18,7 +17,6 @@ const fetchData = async () => {
 <template>
   <Loader v-if="store.loading" />
   <div v-else>
-    <Header />
     <RouterView />
   </div>
 </template>

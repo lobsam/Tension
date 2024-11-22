@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="row container-fluid">
     <div class="col col-1 d-flex">
       <div class="d-flex justify-content-center align-items-center">
@@ -33,6 +34,7 @@
 </template>
 <script setup>
 import ArtModal from '@/components/ArtModal.vue'
+import Header from '@/components/Header.vue'
 import { useSheetStore } from '@/stores/googleSheets'
 const store = useSheetStore()
 </script>
