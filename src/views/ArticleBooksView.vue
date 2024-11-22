@@ -23,8 +23,12 @@
               <p class="card-text">
                 {{ article.description }}
               </p>
-              <p class="card-text">
-                <small style="font-weight: bolder" class="text-muted">READ MORE</small>
+              <p v-if="article.article_link !== ''" class="card-text">
+                <small style="font-weight: bolder" class="text-muted">
+                  <a :href="article.article_link" target="_blank" rel="noopener noreferrer"
+                    >READ MORE</a
+                  >
+                </small>
               </p>
             </div>
           </div>
@@ -44,5 +48,13 @@ const store = useSheetStore()
   font-weight: 900;
   color: black;
   padding: 70px;
+}
+a {
+  text-decoration: none; /* Remove underline for all links */
+  color: black; /* Set text color for all links */
+}
+
+a:hover {
+  text-decoration: none; /* Ensure no underline on hover for all links */
 }
 </style>

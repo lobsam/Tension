@@ -65,7 +65,7 @@ console.log(dialogText)
   width: 100vw;
   min-height: 100vh;
   height: auto;
-  background: url('https://i.ibb.co/DVKFfVM/sleeping-kits.png');
+  background: url('https://i.ibb.co/jGd4Nnf/Hero1.png');
   background-position: center;
   background-size: cover; /* Ensures the image covers the entire container */
   background-repeat: no-repeat; /* Prevents the image from repeating */
