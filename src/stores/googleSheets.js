@@ -28,7 +28,6 @@ export const useSheetStore = defineStore('sheetStore', {
 
           // Use csvtojson to convert CSV data to JSON
           this.dataFromSheetUrl[key] = await csvtojson().fromString(csvText)
-          console.log('data:reload ', this.dataFromSheetUrl)
         }
       } catch (error) {
         console.error('Error fetching data from Google Sheets:', error)

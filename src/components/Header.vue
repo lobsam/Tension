@@ -5,8 +5,7 @@
         PROJECT TENSION
       </a>
       <div class="nav-item text-uppercase fw-bold" href="#">
-        <!-- <router-link to="/art"><MenuIcon /></router-link> -->
-        <MenuIcon />
+        <router-link to="/art"><MenuIcon /></router-link>
       </div>
     </div>
   </nav>
