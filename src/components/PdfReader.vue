@@ -3,8 +3,9 @@
     <div v-if="isLoading" class="d-flex justify-content-center">
       <span>Loading...</span>
     </div>
-    <canvas ref="pdfCanvas" v-show="!isLoading"></canvas>
-    <div class="d-flex justify-content-center pb-3">
+
+    <div else class="d-flex justify-content-center pb-3">
+      <canvas ref="pdfCanvas"></canvas>
       <button class="btn btn-primary" @click="downloadPdf">Download PDF</button>
     </div>
   </div>
