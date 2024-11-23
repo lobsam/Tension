@@ -11,7 +11,7 @@
           <div class="info-graph p-3 p-sm-5 justify-content-center">
             <img
               class="img-fluid mt-5"
-              src="https://i.ibb.co/qs2KK3f/Group-12.png"
+              src="https://i.ibb.co/jJFR2QX/distress-min.png"
               alt="info-graph"
             />
           </div>
