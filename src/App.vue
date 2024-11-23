@@ -16,9 +16,30 @@ const fetchData = async () => {
 
 <template>
   <Loader v-if="store.loading" />
+
   <div v-else>
-    <RouterView />
+    <transition name="slide-right">
+      <RouterView />
+    </transition>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-right-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-right-enter-to,
+.slide-right-leave-from {
+  transform: translateX(0);
+}
+</style>
