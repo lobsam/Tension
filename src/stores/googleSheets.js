@@ -6,10 +6,13 @@ export const useSheetStore = defineStore('sheetStore', {
   state: () => ({
     jsonData: [],
     sheetTableUrl: {
-      themes: import.meta.env.VITE_THEMES_URL,
-      pages: import.meta.env.VITE_PAGES_URL,
-      articls: import.meta.env.VITE_ARTICLES_URL,
-      art: import.meta.env.VITE_ARTS_URL
+      themes:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=0&single=true&output=csv',
+      pages:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1999087703&single=true&output=csv',
+      articls:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1030071400&single=true&output=csv',
+      art: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlJkBWpGDQbWw1zX9BX_mbRdAxJjtsVKgqplFqtxhcUQPK-5f4g5fEGeo8itzKsWKdzpKdeiT0b6Ht/pub?gid=1247829862&single=true&output=csv'
     },
     dataFromSheetUrl: {},
     loading: false
