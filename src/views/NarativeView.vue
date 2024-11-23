@@ -59,12 +59,10 @@ const props = defineProps({
 const purposebody = computed(() => {
   let purpose_list = []
   for (const key in props.pages[3]) {
-    console.log(key)
     if (key.startsWith('paragraph_') && props.pages[3][key]) {
       purpose_list.push(props.pages[3][key])
     }
   }
-  console.log('return data: ', purpose_list)
   return purpose_list
 })
 </script>

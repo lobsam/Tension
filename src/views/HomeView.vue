@@ -8,7 +8,6 @@ import Footer from '../components/Footer.vue'
 import Header from '@/components/Header.vue'
 
 const store = useSheetStore()
-console.log('hello: ', store.dataFromSheetUrl)
 </script>
 
 <template>

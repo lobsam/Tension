@@ -26,7 +26,6 @@ const purposeDescription = computed(() => {
   }
   return purpose_list
 })
-console.log('purpose ', purposeDescription.value)
 </script>
 
 <style scoped>

@@ -51,7 +51,6 @@ const landingPage = computed(() => {
   }
   return { bodyText, dialogText }
 })
-console.log(dialogText)
 </script>
 
 <style>
