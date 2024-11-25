@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar sticky-top my-10" style="background: #256199">
-    <div class="container-fluid">
+    <div class="container-fluid px-5">
       <router-link class="navbar-brand fs-6 text-uppercase fw-bold" style="color: white" to="/"
         >PROJECT TENSION</router-link
       >

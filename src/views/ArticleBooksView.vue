@@ -24,13 +24,20 @@
               <p class="card-text">
                 {{ article.description }}
               </p>
-              <p v-if="article.article_link !== ''" class="card-text">
+              <p v-if="article.artilcle_type == 'link'" class="card-text">
                 <small style="font-weight: bolder" class="text-muted">
                   <a :href="article.article_link" target="_blank" rel="noopener noreferrer"
                     >READ MORE</a
                   >
                 </small>
               </p>
+              <div v-if="article.artilcle_type == 'self'">
+                <small style="font-weight: bolder" class="text-muted">
+                  <router-link :to="{ name: 'id', params: { id: article.id } }"
+                    >READ MORE</router-link
+                  >
+                </small>
+              </div>
             </div>
           </div>
         </div>
@@ -42,18 +49,24 @@
 import { useSheetStore } from '@/stores/googleSheets'
 import Header from '@/components/Header.vue'
 const store = useSheetStore()
+
+// getArticleDetail()
+
+// const getArticleDetail = () => {
+//   const data = store.dataFromSheetUrl.self_published_articles.filter((article) => article.id == 1)
+//   console.log
+// }
 </script>
 <style scoped>
 .rotate-text {
   transform: rotate(270deg);
   white-space: nowrap;
   font-weight: 900;
-  color: black;
   padding: 70px;
 }
 a {
   text-decoration: none; /* Remove underline for all links */
-  color: black; /* Set text color for all links */
+  color: rgb(37, 37, 37); /* Set text color for all links */
 }
 
 a:hover {
