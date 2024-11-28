@@ -4,9 +4,9 @@
     <div class="col col-1">
       <div class="pt-5 d-flex justify-content-center align-items-end">
         <span class="">
-          <p class="rotate-text">ETHNOGRAPHY</p>
-          <p class="rotate-text">ECOLOGY</p>
-          <p class="rotate-text">DESIGN</p>
+          <p class="rotate-text">MAPS</p>
+          <p class="rotate-text">BOOKLETS</p>
+          <p class="rotate-text">ZINEBOOK</p>
         </span>
       </div>
     </div>
