@@ -62,7 +62,12 @@ const getRandomColor = (i) => {
 }
 const getBackground = (index, theme) => {
   if (hoveredIndex.value === index) {
-    return { backgroundImage: `url('${theme.image_url}')` }
+    return {
+      backgroundImage: `url('${theme.image_url}')`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'
+    }
   } else {
     return { backgroundColor: getRandomColor(index) }
   }

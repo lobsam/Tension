@@ -1,9 +1,9 @@
 <template>
   <Header />
   <div class="row container-fluid">
-    <div class="col col-1 d-flex">
-      <div class="d-flex justify-content-center align-items-center">
-        <span class="title">
+    <div class="col col-1">
+      <div class="pt-5 d-flex justify-content-center align-items-end">
+        <span class="">
           <p class="rotate-text">ETHNOGRAPHY</p>
           <p class="rotate-text">ECOLOGY</p>
           <p class="rotate-text">DESIGN</p>
@@ -40,10 +40,10 @@ const store = useSheetStore()
 </script>
 <style scoped>
 .rotate-text {
-  transform: rotate(270deg);
+  transform: rotate(-90deg);
   white-space: nowrap;
   font-weight: 900;
   color: black;
-  padding: 70px;
+  padding: 120px;
 }
 </style>
