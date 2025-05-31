@@ -17,6 +17,5 @@ const store = useSheetStore()
     <PurposeView :pages="store.dataFromSheetUrl.pages" />
     <ThemeView :themes="store.dataFromSheetUrl.themes" />
     <NarativeView :pages="store.dataFromSheetUrl.pages" />
-    <Footer />
   </main>
 </template>

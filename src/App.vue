@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import { useSheetStore } from '@/stores/googleSheets'
 import Loader from '@/components/Loader.vue'
-
+import Footer from '@/components/Footer.vue'
 const store = useSheetStore()
 
 onMounted(() => {
@@ -21,6 +21,7 @@ const fetchData = async () => {
     <transition name="slide-right">
       <RouterView />
     </transition>
+    <Footer />
   </div>
 </template>
 
