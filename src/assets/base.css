@@ -1,3 +1,12 @@
+/* Lexend font-face declaration */
+@font-face {
+  font-family: 'Lexend';
+  src: url('/fonts/Andika-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -67,17 +76,8 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Inter,
+    'Andika-Regular',
     -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
     sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
