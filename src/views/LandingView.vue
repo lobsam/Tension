@@ -185,10 +185,50 @@ const statusMessage = computed(() => {
   line-height: 1.6;
   letter-spacing: 0.005em;
   font-weight: 400;
+  /* Without min-width: 0, a Bootstrap flex column inherits min-width: auto
+     (= content's intrinsic size), so a long word can push col-sm-3 wider
+     than 25% and get horizontally clipped by .landing-page's overflow:
+     hidden on >= 576px. The wrap rules give the same long word somewhere
+     to break in browsers that don't honour overflow-wrap alone. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .landing-body p {
   margin-bottom: 0.75em;
+}
+
+/* On viewports where .landing-page locks itself to a fixed height with
+   overflow: hidden, bound this column to the room it actually has and let
+   it scroll its own paragraphs instead of being cropped at the bottom by
+   the parent. Calc allows for nav (~3rem) + worst-case row padding (~8rem
+   top + ~2.5rem bottom). The scrollbar styling is deliberately minimal so
+   it stays out of the way until the user needs it. */
+@media (min-width: 576px) {
+  .landing-body {
+    max-height: calc(100vh - 11rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .landing-body::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .landing-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 2px;
+  }
+
+  .landing-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 .landing-status-note {
