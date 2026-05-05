@@ -56,11 +56,37 @@ const article = computed(() => {
     return null
   }
 
+  const directMatch = sourceArticles.find((entry) => {
+    const entryId = Number(entry.article_id ?? entry.id)
+    return Number.isFinite(entryId) && entryId === normalizedArticleId.value
+  })
+
+  if (directMatch) {
+    return directMatch
+  }
+
+  // The `article_id` in the self-published sheet does not always line up
+  // with the `id` in the `articls` listing (e.g. article 3 in the listing
+  // is stored under article_id 2). Resolve the parent listing entry by the
+  // route id and match the self-published row by title prefix so the
+  // article is still found.
+  const listing = store.dataFromSheetUrl.articls || []
+  const parent = listing.find(
+    (entry) => Number(entry.id) === normalizedArticleId.value
+  )
+
+  if (!parent || !parent.title) {
+    return null
+  }
+
+  const parentTitle = String(parent.title).trim()
+
   return (
-    sourceArticles.find((entry) => {
-      const entryId = Number(entry.article_id ?? entry.id)
-      return Number.isFinite(entryId) && entryId === normalizedArticleId.value
-    }) ?? null
+    sourceArticles.find((entry) =>
+      String(entry.title ?? '')
+        .trim()
+        .startsWith(parentTitle)
+    ) ?? null
   )
 })
 
