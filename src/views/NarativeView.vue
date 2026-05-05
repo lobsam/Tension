@@ -34,13 +34,26 @@
           </div>
         </div>
         <div class="col-12 col-sm-6 text-start pe-0 pe-sm-5">
-          <div
-            class="p-4"
-            style="font-size: 20px; color: black"
-            v-for="(text, i) in purposebody"
-            :key="i"
-          >
-            <p>{{ text }}</p>
+          <div v-if="showStatusNote" class="narrative-status-note p-4">
+            <p class="mb-2">{{ statusMessage }}</p>
+            <button
+              v-if="props.errorMessage"
+              type="button"
+              class="narrative-retry-button"
+              @click="emit('retry')"
+            >
+              Retry narrative content
+            </button>
+          </div>
+          <div v-else>
+            <div
+              class="p-4"
+              style="font-size: 20px; color: black"
+              v-for="(text, i) in purposebody"
+              :key="i"
+            >
+              <p>{{ text }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -49,21 +62,50 @@
 </template>
 <script setup>
 import { computed } from 'vue'
+const emit = defineEmits(['retry'])
 const props = defineProps({
   pages: {
-    type: Object,
-    required: true
+    type: Array,
+    default: () => []
+  },
+  isLoading: {
+    type: Boolean,
+    default: false
+  },
+  errorMessage: {
+    type: String,
+    default: ''
   }
 })
 
-const purposebody = computed(() => {
-  let purpose_list = []
-  for (const key in props.pages[3]) {
-    if (key.startsWith('paragraph_') && props.pages[3][key]) {
-      purpose_list.push(props.pages[3][key])
-    }
+const getParagraphs = (page) => {
+  if (!page || typeof page !== 'object') {
+    return []
   }
-  return purpose_list
+
+  return Object.keys(page)
+    .filter((key) => key.startsWith('paragraph_') && page[key])
+    .sort((a, b) => Number(a.replace('paragraph_', '')) - Number(b.replace('paragraph_', '')))
+    .map((key) => page[key])
+}
+
+const purposebody = computed(() => {
+  const pages = Array.isArray(props.pages) ? props.pages : []
+  return getParagraphs(pages[3])
+})
+
+const showStatusNote = computed(() => purposebody.value.length === 0)
+
+const statusMessage = computed(() => {
+  if (props.isLoading) {
+    return 'Loading narrative content...'
+  }
+
+  if (props.errorMessage) {
+    return props.errorMessage
+  }
+
+  return 'Narrative content is temporarily unavailable.'
 })
 </script>
 <style lang="css" scoped>
@@ -85,6 +127,19 @@ const purposebody = computed(() => {
   transform: rotate(270deg);
   white-space: nowrap;
   font-weight: 900;
+}
+
+.narrative-status-note {
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
+}
+
+.narrative-retry-button {
+  border: 1px solid #333;
+  background: white;
+  color: #111;
+  padding: 0.35rem 0.8rem;
 }
 
 @media (min-width: 1200px) {
