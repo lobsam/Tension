@@ -73,28 +73,48 @@ const statusMessage = computed(() => {
 
 <style scoped>
 .page {
+  position: relative;
+  z-index: 2;
   font-family: 'Source Sans Pro', sans-serif;
   color: rgb(0, 0, 0);
   min-height: 70vh;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(3rem, 8vh, 6rem);
+  padding-bottom: clamp(4rem, 10vh, 8rem);
 }
 
 .purpose-status-note {
-  margin-top: 20vh;
+  margin: 0 auto;
   border: 1px solid #333;
   padding: 1rem;
   max-width: 36rem;
 }
 
 .purpose-description-list {
-  margin-top: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
 }
 
 .purpose-description-card {
-  font-size: 22px;
-  color: #111;
+  font-size: clamp(0.95rem, 0.45vw + 0.8rem, 1.125rem);
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+  color: #1a1a1a;
   background-color: #fff;
-  padding: 20px;
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(2.25rem, 5vw, 4rem);
+  width: 100%;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  text-align: left;
+}
+
+.purpose-description-card + .purpose-description-card {
+  margin-top: 1.25rem;
 }
 
 .purpose-retry-button {
@@ -106,26 +126,29 @@ const statusMessage = computed(() => {
 
 .image-container {
   position: relative;
+  z-index: 1;
   width: 100%;
-  height: 100px; /* Adjust this as per your requirement */
+  line-height: 0;
 }
 
 .image-container img {
-  position: absolute;
-  bottom: 0;
+  display: block;
   width: 100%;
-  height: auto; /* This maintains the aspect ratio */
-  object-fit: cover; /* Ensures the image covers the full width */
+  height: auto;
+  object-fit: cover;
 }
 
 @media (max-width: 575.98px) {
-  .purpose-description-list {
-    margin-top: 12vh;
+  .page {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .purpose-description-card {
-    font-size: 1.15rem;
-    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    padding: 1.5rem 1.4rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
   }
 }
 </style>

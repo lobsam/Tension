@@ -170,8 +170,25 @@ const statusMessage = computed(() => {
 
 .landing-dialog {
   font-style: italic;
-  font-size: clamp(1.05rem, 1.2vw + 0.7rem, 1.75rem);
-  line-height: 1.45;
+  font-size: clamp(0.9rem, 0.55vw + 0.75rem, 1.2rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+.landing-dialog p {
+  margin-bottom: 0.8em;
+}
+
+.landing-body {
+  font-size: clamp(0.8rem, 0.45vw + 0.7rem, 1.05rem);
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+.landing-body p {
+  margin-bottom: 0.75em;
 }
 
 .landing-status-note {
