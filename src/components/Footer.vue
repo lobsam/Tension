@@ -22,11 +22,21 @@
           <div class="footer-contact">
             <p>
               <img src="/icons/email.svg" alt="Email" class="contact-icon" />
-              <span>ACADEMIC INQUIRIES:</span> ns53@soas.ac.uk
+              <span class="contact-text">
+                <span class="contact-label">ACADEMIC INQUIRIES:</span> ns53@soas.ac.uk
+              </span>
             </p>
             <p>
               <img src="/icons/email.svg" alt="Email" class="contact-icon" />
-              <span>ART INQUIRIES:</span> soujanyaa@vaquum.fi
+              <span class="contact-text">
+                <span class="contact-label">ART INQUIRIES:</span> soujanyaa@vaquum.fi
+              </span>
+            </p>
+            <p>
+              <img src="/icons/email.svg" alt="Email" class="contact-icon" />
+              <span class="contact-text">
+                <span class="contact-label">FIELD INQUIRIES:</span> shyam.himalayanshepherd@gmail.com
+              </span>
             </p>
           </div>
         </div>
@@ -90,7 +100,7 @@
 }
 
 .footer-copy span,
-.footer-contact span {
+.footer-contact .contact-label {
   font-weight: 700;
 }
 
@@ -98,6 +108,13 @@
   display: flex;
   align-items: flex-start;
   gap: 0.7rem;
+}
+
+.contact-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .contact-icon {
