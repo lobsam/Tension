@@ -1,0 +1,212 @@
+{
+  "generatedAt": "2026-04-19T19:02:40.966Z",
+  "baseUrl": "http://127.0.0.1:4173",
+  "routes": [
+    "/",
+    "/articles",
+    "/articles/1",
+    "/art"
+  ],
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "totalChecks": 12,
+  "passedChecks": 12,
+  "failedChecks": 0,
+  "results": [
+    {
+      "route": "/",
+      "routeLabel": "home",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 6
+      }
+    },
+    {
+      "route": "/",
+      "routeLabel": "home",
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 6
+      }
+    },
+    {
+      "route": "/",
+      "routeLabel": "home",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 6
+      }
+    },
+    {
+      "route": "/articles",
+      "routeLabel": "articles",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/articles",
+      "routeLabel": "articles",
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/articles",
+      "routeLabel": "articles",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/articles/1",
+      "routeLabel": "article-detail",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/articles/1",
+      "routeLabel": "article-detail",
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/articles/1",
+      "routeLabel": "article-detail",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/art",
+      "routeLabel": "art",
+      "viewport": "mobile",
+      "width": 375,
+      "height": 812,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/art",
+      "routeLabel": "art",
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    },
+    {
+      "route": "/art",
+      "routeLabel": "art",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pass": true,
+      "issues": [],
+      "metrics": {
+        "hasHorizontalOverflow": false,
+        "hasRenderableContent": true,
+        "navVisible": true,
+        "visibleInteractiveCount": 5
+      }
+    }
+  ]
+}

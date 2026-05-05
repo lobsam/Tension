@@ -7,31 +7,33 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "smoke:routes": "node scripts/smoke-routes.mjs",
+    "smoke:responsive": "node scripts/responsive-smoke.mjs",
+    "smoke:release": "npm run build && npm run smoke:routes && npm run smoke:responsive",
+    "lint": "npm run lint:check",
+    "lint:check": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
+    "lint:fix": "npm run lint:check -- --fix",
+    "format": "npm run format:fix",
+    "format:check": "prettier --check . --ignore-path .gitignore",
+    "format:fix": "prettier --write . --ignore-path .gitignore"
   },
   "dependencies": {
-    "aos": "^2.3.4",
-    "axios": "^1.7.7",
-    "bootstrap": "^5.3.0",
-    "csvtojson": "^2.0.10",
-    "pdfjs-dist": "^4.8.69",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.29",
-    "vue-pdf-embed": "^2.1.1",
-    "vue-router": "^4.3.3"
+    "axios": "^1.15.1",
+    "bootstrap": "^5.3.8",
+    "csvtojson": "^2.0.14",
+    "pdfjs-dist": "^4.10.38",
+    "pinia": "^2.3.1",
+    "vue": "^3.5.32",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
-    "@vitejs/plugin-vue": "^5.0.5",
-    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "@rushstack/eslint-patch": "^1.16.1",
+    "@vitejs/plugin-vue": "^5.2.4",
     "@vue/eslint-config-prettier": "^9.0.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
-    "postcss": "^8.4.45",
-    "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.10",
-    "vite": "^5.3.1"
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.33.0",
+    "playwright": "^1.59.1",
+    "prettier": "^3.8.3",
+    "vite": "^5.4.21"
   }
 }

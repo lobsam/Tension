@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ArticleBooksView from '@/views/ArticleBooksView.vue'
 import ArtView from '@/views/ArtView.vue'
+import ArtDetailView from '@/views/ArtDetailView.vue'
+import ExhibitionView from '@/views/ExhibitionView.vue'
 import SelfPublishArticles from '@/components/SelfPublishArticles.vue'
 
 const router = createRouter({
@@ -23,9 +25,20 @@ const router = createRouter({
       component: ArtView
     },
     {
+      path: '/art/:id',
+      name: 'art-detail',
+      props: (route) => ({ id: route.params.id }),
+      component: ArtDetailView
+    },
+    {
+      path: '/exhibition',
+      name: 'exhibition',
+      component: ExhibitionView
+    },
+    {
       path: '/articles/:id',
-      name: 'id',
-      props: (route) => ({ query: route.query.id }),
+      name: 'article-detail',
+      props: (route) => ({ id: route.params.id }),
       component: SelfPublishArticles
     }
   ]

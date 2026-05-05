@@ -1,5 +1,13 @@
 <template>
-  <svg width="67" height="56" viewBox="0 0 67 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="40"
+    height="34"
+    viewBox="0 0 67 56"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
     <rect width="67" height="56" rx="28" fill="#D9D9D9" />
     <g clip-path="url(#clip0_76_16)">
       <path

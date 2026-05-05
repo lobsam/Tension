@@ -1,51 +1,113 @@
 <template>
-  <Header />
-  <div>
-    <img :src="article.data.image_url" class="card-img-top image" :alt="article.data.image_url" />
+  <div v-if="isSheetLoading && !hasAnyArticles" class="container p-5">
+    <h5 class="mb-3">Loading article</h5>
+    <p class="mb-0">Please wait while the article content is loading.</p>
   </div>
-  <div class="card-body">
-    <div class="p-5 container">
-      <h5 class="card-title mb-5">{{ article.data.title }}</h5>
-      <h6 class="card-text fw-bold">{{ article.data.header }}</h6>
-      <p v-for="(p, i) in parseArticle(article.data.article)" :key="i">{{ p }}</p>
+  <div v-else-if="showSheetError" class="container p-5">
+    <h5 class="mb-3">Article content unavailable</h5>
+    <p class="mb-4">{{ sheetError }}</p>
+    <button type="button" class="btn btn-outline-dark rounded-0 me-2" @click="retrySelfPublishedSheet">
+      Retry
+    </button>
+    <router-link class="btn btn-outline-dark rounded-0" to="/articles">Back to articles</router-link>
+  </div>
+  <div v-else-if="article">
+    <div>
+      <img :src="article.image_url" class="card-img-top image" :alt="article.title || 'Article image'" />
     </div>
+    <div class="card-body">
+      <div class="p-5 container">
+        <h5 class="card-title mb-5">{{ article.title }}</h5>
+        <h6 v-if="article.header" class="card-text fw-bold">{{ article.header }}</h6>
+        <p v-for="(paragraph, i) in parsedArticle" :key="i">{{ paragraph }}</p>
+      </div>
+    </div>
+  </div>
+  <div v-else class="container p-5">
+    <h5 class="mb-3">Article unavailable</h5>
+    <p class="mb-4">The requested article could not be found.</p>
+    <router-link class="btn btn-outline-dark rounded-0" to="/articles">Back to articles</router-link>
   </div>
 </template>
 
 <script setup>
-import Header from '@/components/Header.vue'
-import { useRoute } from 'vue-router'
 import { useSheetStore } from '@/stores/googleSheets'
-import { onMounted, reactive } from 'vue'
-
-const route = useRoute()
+import { computed } from 'vue'
 const store = useSheetStore()
-const article = reactive({
-  data: {}
+
+const props = defineProps({
+  id: {
+    type: [String, Number],
+    required: true
+  }
 })
 
-onMounted(() => {
-  getIdArticle()
-  console.log('heheh: ', article.data)
+const normalizedArticleId = computed(() => Number(props.id))
+const selfPublishedArticles = computed(() => store.dataFromSheetUrl.self_published_articles || [])
+const isSheetLoading = computed(() => store.isSheetLoading('self_published_articles'))
+const sheetError = computed(() => store.getSheetError('self_published_articles'))
+const hasAnyArticles = computed(() => selfPublishedArticles.value.length > 0)
+const showSheetError = computed(() => Boolean(sheetError.value) && !hasAnyArticles.value)
+
+const article = computed(() => {
+  const sourceArticles = selfPublishedArticles.value
+
+  if (!Array.isArray(sourceArticles) || !Number.isFinite(normalizedArticleId.value)) {
+    return null
+  }
+
+  const directMatch = sourceArticles.find((entry) => {
+    const entryId = Number(entry.article_id ?? entry.id)
+    return Number.isFinite(entryId) && entryId === normalizedArticleId.value
+  })
+
+  if (directMatch) {
+    return directMatch
+  }
+
+  // The `article_id` in the self-published sheet does not always line up
+  // with the `id` in the `articls` listing (e.g. article 3 in the listing
+  // is stored under article_id 2). Resolve the parent listing entry by the
+  // route id and match the self-published row by title prefix so the
+  // article is still found.
+  const listing = store.dataFromSheetUrl.articls || []
+  const parent = listing.find(
+    (entry) => Number(entry.id) === normalizedArticleId.value
+  )
+
+  if (!parent || !parent.title) {
+    return null
+  }
+
+  const parentTitle = String(parent.title).trim()
+
+  return (
+    sourceArticles.find((entry) =>
+      String(entry.title ?? '')
+        .trim()
+        .startsWith(parentTitle)
+    ) ?? null
+  )
 })
 
-console.log(store.dataFromSheetUrl.self_published_articles)
-
-const getIdArticle = () => {
-  article.data = store.dataFromSheetUrl.self_published_articles.filter(
-    (article) => Number(article.article_id) == Number(route.params.id)
-  )[0]
-}
 const parseArticle = (text) => {
-  // Split the text into paragraphs by double newlines
-  const paragraphs = String(text)
-    .split('\n')
-    .map((p) => p.trim())
-    .filter((p) => p)
+  if (typeof text !== 'string') {
+    return []
+  }
 
-  // Create HTML paragraphs
-  // return paragraphs.map((p) => `<p>${p}</p>`).join('\n')
-  return paragraphs
+  return text
+    .split('\n')
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+}
+
+const parsedArticle = computed(() => parseArticle(article.value?.article))
+
+const retrySelfPublishedSheet = async () => {
+  await store.fetchSheetData({
+    force: true,
+    sheetKeys: ['self_published_articles']
+  })
 }
 </script>
 
